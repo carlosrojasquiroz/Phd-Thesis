@@ -1,0 +1,135 @@
+%------------------------------------------------------------------------------------------------------------
+% 						PhD Thesis - Project 3
+% 				Oil Supply News and Sovereign Default Risk: 
+% 				Exploring the Link in Oil Exporting Economies
+%------------------------------------------------------------------------------------------------------------
+% Housekeeping
+%------------------------------------------------------------------------------------------------------------
+% Declare the document type
+\documentclass[compress,11pt,aspectratio=43]{beamer}
+% Use the custom style file
+\usepackage{mystyle}
+% Title, author, institution and date
+\title{{\Large{{Oil Supply News and Sovereign Default Risk:
+Exploring the Link in Oil Exporting Economies}}}}
+\author{\normalsize{Carlos Rojas Quiroz}}
+\institute{\normalsize{European University Institute}}
+\date{\normalsize{\today}}
+%------------------------------------------------------------------------------------------------------------
+% Document
+%------------------------------------------------------------------------------------------------------------
+\begin{document}
+% Cover
+\begin{frame}[plain]
+    \titlepage 
+\end{frame}
+% Introduction
+\section{Introduction}
+\begin{frame}[label=Intro]{Introduction}
+    \begin{itemize}
+        \item Oil price fluctuations contain information on net oil exporter's repayment capacity. Expectations of future oil price determine current sovereign default risk \citep{fernandez2018sharing}.
+        \item News on commodity prices explain almost half of output variations in emerging economies \citep{benzeev2017emerging}
+    \end{itemize}
+\end{frame}
+\begin{frame}[label=Intro3]{Introduction}
+Two examples on the role of oil price news in LatAm sovereign bond markets:
+    \vspace{0.25cm}
+    \begin{itemize}        
+        \item[] \textcolor{myblue}{{\large Ecuador yields surge above 20\% as oil rout boosts default risk}} \\
+            \textit{Ecuador’s dollar bonds slumped the most in emerging markets as investors price in a higher probability of default following the crash in crude prices [...] \hly{Oil crashed more than 30\% on Monday after the breakup of the OPEC+ alliance triggered an all-out price war, with both Russia and Saudi Arabia poised to flood the market with cheap oil.}} \\
+            \vspace{0.25cm}
+            Date: 9 March 2020. Source: Bloomberg.
+    \end{itemize}   
+\end{frame}
+\begin{frame}[label=IntroApp1]{Introduction}
+Two examples on the role of oil price news in LatAm sovereign bond markets:
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item[] \textcolor{myblue}{\large Fitch Downgrades Colombia's Rating to 'BBB-'; Outlook Remains Negative} \\
+		\textit{The downgrade reflects the likely weakening of key fiscal metrics in the wake of the economic downturn caused by a combination of shocks stemming from the sharp fall in the oil price and efforts to combat the coronavirus pandemic [... ] \hly{The recession and fall in oil price will negatively impact government revenues while the fiscal package announced by the government (1.4\% of GDP to date) will increase government spending.}} \\
+		\vspace{0.25cm}
+		Date: 01 April 2020. Source: Fitch Ratings
+	\end{itemize}		
+\end{frame}
+\begin{frame}[label=This1]{This paper}
+    \begin{itemize}
+        \item I empirically examine the impact of oil price fluctuations driven by \alert{oil supply news} on the economy of six LatAm net oil exporters
+        \item I build a quantitative model to analyze the role of the \alert{exchange rate regime} in the transmission of these shocks and propose counterfactual exercises
+    \end{itemize}
+\end{frame}
+\begin{frame}[label=Question]{Research question}
+\begin{itemize}
+    \item What is the quantitative impact of oil supply news on sovereign spreads in net oil exporting economies in the Americas?
+    \begin{itemize}
+        \item Is there evidence of a feedback effect arising from the relationship between oil supply news and sovereign default risk?
+        \item How is the oil supply news shock transmitted throughout the economy?
+        \item Is this impact unique to net oil exporters in the Americas, or could similar effects be observed in other economies?
+    \end{itemize}
+\end{itemize}
+\end{frame}
+%------------------------------------------------------------------------------------------------------------
+% Literature review
+%------------------------------------------------------------------------------------------------------------
+\begin{frame}{Literature review}
+\begin{itemize}
+    \item \textcolor{myblue}{Negative relationship between oil price fluctuations and sovereign default risk} \\
+    {\footnotesize \citet{wegener2016oil}, \citet{pavlova2018dynamic}, \citet{chuffart2019investigation}, \citet{bouri2020oil}}
+    \item \textcolor{myblue}{Effects according to the source of the oil price shock: demand/supply driven shocks} \\
+    {\footnotesize \citet{filippidis2020oil}, \citet{alturki2021impact}, \citet{chen2022oil}, \citet{alsalman2023oilb}, \citet{kumar2024oil}}
+    \item \textcolor{myblue}{The effect of oil discoveries and reserves on sovereign default risk} \\ 
+    {\footnotesize \citet{hooper2015oil}, \citet{hamann2023natural}, \citet{esquivel2023sovereign}}
+    \item \textcolor{myblue}{Macroeconomic repercussions of oil supply news shocks} \\ {\footnotesize \citet{kanzig2021macroeconomic}, \citet{caraiani2022impact}, \citet{liu2022oil}, \citet{alsalman2023oil}, \citet{miyamoto2023oil}, \citet{drossidis2024distributional}, \citet{sardar2024revisiting}} 
+\end{itemize}    
+\end{frame}
+%------------------------------------------------------------------------------------------------------------
+% Methodology
+%------------------------------------------------------------------------------------------------------------
+\begin{frame}[label=methodology]{Methodology}
+I employ a two-stage approach:
+    \begin{enumerate}
+        \item Proxy-VAR model characterizing the world oil market, from which oil supply news shocks are derived \hyperlink{1ststage}{\beamerbutton{$\boldsymbol{\Rightarrow}$}}
+        \item Local Projection analysis incorporating the estimated news shocks in a panel of six LatAm net oil exporters \hyperlink{2ndstage}{\beamerbutton{$\boldsymbol{\Rightarrow}$}}
+    \end{enumerate}
+\end{frame}
+\begin{frame}{Methodology}{Second stage: Panel local projection}
+Baseline specification (for $h = 0,...,12$)
+\begin{equation}\label{eq.4.8}
+        {y}_{it+h}-{y}_{it-1} = \alpha_{i(h)} + \beta_{(h)} {s}_t + \gamma_{(h)}(L)\boldsymbol{z}_{it} + \delta_{(h)} \boldsymbol{d}_{it+h} + \nu_{it+h} \ \ 
+\end{equation}
+\vspace{-0.5cm}
+\begin{itemize}
+    \item ${y}_{it}$ is the variable of interest of country $i$ in period $t$ and $h$ indicates the forecast horizon 
+    \item $\alpha_{i(h)}$ is the country fixed-effect
+    \item ${s}_t$ represents the estimated oil supply news shock
+    \item $\boldsymbol{z}_{it}=\left\lbrace \Delta y_{it}, s_t\right\rbrace$ with the lag polynominal $\gamma_{(h)}(L)$ and $L=4$
+    \item $\boldsymbol{d}_{it}$ is a vector of dummy variables: take the value of one if country $i$ has defaulted on its debt in period $t$ and zero otherwise
+    \item $\beta_{(h)}$ captures the \alert{cumulative response} of variable of interest, $h$ quarters after the shock
+\end{itemize}
+\end{frame}
+
+\end{document}
+%------------------------------------------------------------------------------------------------------------
+% Additional slides
+%------------------------------------------------------------------------------------------------------------
+% Introduction
+\begin{frame}[label=Intro2]{Introduction}
+Some examples on the role of oil price news in LatAm sovereign bond markets:
+    \vspace{0.25cm}    
+    \begin{itemize}
+        \item[] \textcolor{myblue}{{\large Venezuela: drumbeat of default gets louder}} \\
+        \textit{Plunging crude prices are wreaking havoc on the finances of oil companies and oil producing countries across the globe. But among the major oil exporters, no one arguably is feeling the strain of Brent’s descent toward the \$27 a barrel mark as much as Venezuela [...] \hly{Analysts warn a default is becoming increasingly difficult to avoid in 2016 given the huge drop in oil prices}.} \\
+        \vspace{0.25cm}
+        Date: 21 January 2016. Source: Financial Times.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[label=IntroApp1]{Introduction}
+Two additional examples on the role of oil price news in LatAm sovereign bond markets:
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item[] \textcolor{myblue}{\large S\&P lowers Mexico's sovereign credit outlook to negative} \\
+		\textit{Standard \& Poor's on Tuesday lowered Mexico's sovereign credit outlook to negative from stable, adding that a downgrade could happen in the next two years if the government's debt or interest burden [...] On Monday, data showed Mexico's economy shrank in the second quarter for the first time in three years, prompting the government to revise down its 2016 outlook. \hly{The contraction comes as a slump in crude oil prices hammers Mexico's economy.}} \\
+		\vspace{0.25cm}
+		Date: 23 August 2016. Source: Reuters
+	\end{itemize}	
+\end{frame}

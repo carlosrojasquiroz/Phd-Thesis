@@ -1,0 +1,184 @@
+%------------------------------------------------------------------------
+ % Define the package name
+ %------------------------------------------------------------------------
+\ProvidesPackage{mystyle}
+%------------------------------------------------------------------------
+% Presentation mode
+%------------------------------------------------------------------------
+\mode<presentation>{
+    % Use professional fonts
+    \usefonttheme{professionalfonts} 
+    % Ensure biblatex is loaded in presentation mode
+    \usepackage[backend=biber,citestyle=authoryear,maxcitenames=2,bibstyle=authoryear,natbib]{biblatex}
+    \addbibresource{./references.bib} % Add bibliography resource
+}
+%------------------------------------------------------------------------
+% Themes
+%------------------------------------------------------------------------
+\usetheme{Madrid} % Set theme to Madrid
+\usecolortheme{dove} % Set color theme to Dove
+%------------------------------------------------------------------------
+% Custom colors 
+%------------------------------------------------------------------------
+\definecolor{mycanvas}{RGB}{252,251,249} 
+\definecolor{myblack}{RGB}{45, 64, 89}
+\definecolor{myblue}{RGB}{0, 114, 198}
+\definecolor{myred}{RGB}{234, 84, 85}
+\definecolor{myorange}{RGB}{240, 123, 63}
+\colorlet{mygray}{gray!60!}
+\definecolor{myyellow}{RGB}{255,227,122}
+\definecolor{mygreen}{RGB}{147, 155, 98}
+%------------------------------------------------------------------------
+% Beamer colors
+%------------------------------------------------------------------------
+\setbeamercolor{background canvas}{bg=white} % Set background color
+%\setbeamercolor{math text}{fg=myblack} % Set math text color
+\setbeamercolor{frametitle}{fg=black, bg=white} % Set frame title color
+\setbeamercolor{framesubtitle}{fg=black, bg=white} % Set frame subtitle color
+\setbeamercolor{upper separation line head}{bg=white} % Set upper separation line head color
+\setbeamercolor{section in head/foot}{fg=black, bg=white} % Set section in head/foot color
+% Redefine button 
+\setbeamercolor{button}{fg=mygray, bg=white} % Set button color
+\setbeamercolor{button border}{fg=mygray} % Set button border
+\setbeamerfont{button}{size=\scriptsize} % Set button font
+% Redefine the \alert command
+\setbeamercolor{alerted text}{fg=myred}
+\setbeamerfont{alerted text}{series=\mdseries}
+%------------------------------------------------------------------------
+% Packages
+%------------------------------------------------------------------------
+\usepackage{multicol} % Multi-column text
+\usepackage{appendix} % Appendix support
+\usepackage{pgfpages} % Create PDF pages
+\usepackage{fontawesome} % FontAwesome icons
+\usepackage[spanish,english]{babel} % Language support
+\usepackage{microtype} % Improve typography
+\usepackage{xcolor} % Color support
+\usepackage{caption} % Customize captions
+\usepackage{subcaption} % Sub-captions for figures/tables
+\usepackage{floatrow} % Manage figure and table floating
+\usepackage{graphicx} % Include graphics
+\usepackage{hhline} % Create horizontal lines in tables
+\usepackage{adjustbox} % Adjust box sizes
+\usepackage{tikz} % Drawing with TikZ
+\usepackage{soul} % Text highlighting
+\usepackage{tcolorbox} % Create colored boxes
+\usepackage{amsmath} % AMS math support
+\usepackage{mathtools} % Mathematical tools
+\usepackage{amsfonts} % AMS fonts support
+\usepackage{amssymb} % AMS symbols support
+\usepackage{multirow} % Multi-row cells in tables
+\usepackage{xfrac} % Slanted fractions
+\usepackage{csquotes} % Context-sensitive quotations
+%------------------------------------------------------------------------
+% Fonts
+%------------------------------------------------------------------------
+\usepackage{fontspec} % Font specification
+\setsansfont{Fira Sans}[ % Set Fira Sans as the sans-serif font
+    Extension = .otf,
+    UprightFont = *-Regular,
+    ItalicFont = *-Italic,
+    BoldFont = *-Bold,
+    BoldItalicFont = *-BoldItalic,
+    Numbers = {Lining, Proportional}
+]
+%------------------------------------------------------------------------
+% Math fonts and settings
+%------------------------------------------------------------------------
+\usepackage{MnSymbol} % Additional math symbols
+\usepackage[cal=euler,bb=fourier]{mathalpha} % Calligraphic and blackboard-bold fonts
+% Text and math font matching
+\usepackage[italic,eulergreek,nolessnomore,noparenthesis,noplusnominus,noequal,nohbar]{mathastext} 
+% Correct spacing around certain Roman letters
+\MTsetmathskips{y}{2mu}{0mu}
+\MTsetmathskips{j}{2mu}{0mu}
+%------------------------------------------------------------------------
+% Title page settings
+%------------------------------------------------------------------------
+\setbeamertemplate{title page}{
+    \vbox{}
+    \vfill
+    \begingroup
+        \raggedright
+        \begin{beamercolorbox}[sep=8pt,left]{title}
+            \usebeamerfont{title}\inserttitle\par%
+            \ifx\insertsubtitle\@empty
+            \else
+                \vskip0.25em
+                {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+            \fi
+        \end{beamercolorbox}
+        \vskip1em\par
+        \begin{beamercolorbox}[sep=8pt,left]{author}
+            \usebeamerfont{author}\insertauthor
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[sep=8pt,left]{institute}
+            \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[sep=8pt,left]{date}
+            \usebeamerfont{date}\insertdate
+        \end{beamercolorbox}\par
+    \endgroup
+    \vfill
+}
+%------------------------------------------------------------------------
+% Uppercase main title and frametitle
+%------------------------------------------------------------------------
+\setbeamerfont{title}{size=\LARGE,shape=\scshape} % Main title in uppercase
+\setbeamerfont{frametitle}{shape=\scshape} % Frame title in uppercase
+%------------------------------------------------------------------------
+% Adjust slide layout
+%------------------------------------------------------------------------
+\setbeamertemplate{title page}[default][left,leftskip=-8pt] % Set layout on title page
+\setbeamersize{text margin left=5mm,text margin right=5mm} % Set margins on regular pages
+%------------------------------------------------------------------------
+% Adjust spacing
+%------------------------------------------------------------------------
+\usepackage{microtype} % Set spacing on lines
+\DisableLigatures[f]{encoding = *, family = * } % Remove ligatures
+%------------------------------------------------------------------------
+% Customize bullets
+%------------------------------------------------------------------------
+% Set list font
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize} % Second level
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize} % Third level
+% Set list items color
+\setbeamercolor{itemize item}{fg=mygray} % Itemized list, first level
+\setbeamercolor{itemize subitem}{fg=mygray}  % Itemized list, second level
+\setbeamercolor{itemize subsubitem}{fg=mygray}  % Itemized list, third level
+\setbeamercolor{enumerate item}{fg=mygray}  % Numbered list, first level
+\setbeamercolor{enumerate subitem}{fg=mygray}  % Numbered list, second level
+\setbeamercolor{enumerate subsubitem}{fg=mygray}  % Numbered list, third level
+%------------------------------------------------------------------------
+% Format lists
+%------------------------------------------------------------------------
+% Format itemized lists
+\setbeamertemplate{itemize item}{\textbullet} % First-level item
+\setbeamertemplate{itemize subitem}{\textendash} % Second-level item
+\setbeamertemplate{itemize subsubitem}{\textsquare} % Third-level item
+% Format numbered lists
+\setbeamertemplate{enumerate item}[default] % First-level item
+\setbeamertemplate{enumerate subitem}{\alph{enumii}.} % Second-level item
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.} % Third-level item
+%------------------------------------------------------------------------
+% Custom commands
+%------------------------------------------------------------------------
+\renewcommand{\footnotemark}{} % Remove footnote marks
+\renewcommand{\footnotetext}[1]{} % Remove footnote text
+\DeclareRobustCommand{\hly}[1]{{\sethlcolor{myyellow}\hl{#1}}} % Highlight command
+%------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+% Graphics path
+%------------------------------------------------------------------------
+\graphicspath{{./graphs/}} % Set graphics path
+%------------------------------------------------------------------------
+% Remove navigation symbols and footer
+%------------------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{} % Remove navigation symbols
+\setbeamertemplate{footline}{} % Remove footer
+%------------------------------------------------------------------------
+\endinput % End of package
+%------------------------------------------------------------------------
