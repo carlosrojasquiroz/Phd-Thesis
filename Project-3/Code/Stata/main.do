@@ -1,11 +1,10 @@
 /*------------------------------------------------------------------------------
-Project: 		The transmission of oil supply news in net oil exporting 
-				economies: the role of sovereign default risk
-Author: 		Carlos Rojas Quiroz
-Institution: 	European University Institute
-Date: 			2024-10-14
-Method: 		Local Projection Panel Data
-Description: 	High/Low Debt Regimes
+Project: The transmission of oil supply news in net oil exporting economies
+Author: Carlos Rojas Quiroz
+Institution: European University Institute
+Date: 2024-10-14
+Method: Local Projection Panel Data
+Description: High/Low Debt Regimes
 ------------------------------------------------------------------------------*/
 // Step 0: Housekeeping
 clear all
@@ -22,6 +21,7 @@ do "load_data.do"
 do "global_variables.do"
 // Step 3: Compute the smooth transition function
 do "smooth_transition.do"
+do "graphs_regime.do"
 // Step 4: Transform the initial variables
 do "transformation_variables.do"
 // Step 5: Run local projection
@@ -43,7 +43,7 @@ replace sh_ = s_*id_high
 // Step 5: Run local projection
 do "lp_analysis.do"
 *-------------------------------------------------------------------------------
-* Robustness exercise 2: changing the average by the median in the smt
+* Robustness exercise 2: changing the median by the average in the smt
 *-------------------------------------------------------------------------------
 // Step 2: Declare global variables
 global VARSTF "debtgdp" // <- variable in the smt
@@ -51,7 +51,7 @@ global VERSION "v2" // <- new name for results
 // Step 3: Compute the smooth transition function
 drop p10 p25 p50 p75 p90 desvest promedio X Fd // <- erase old variables
 do "smooth_transition.do"
-quietly replace X = (L.$VARSTF - p50)/desvest // <- use of the median
+quietly replace X = (L.$VARSTF - promedio)/desvest // <- use of the median
 local theta 3
 quietly replace Fd = exp(`theta'*X)/(1+exp(`theta'*X))
 // Step 4: Transform the initial variables

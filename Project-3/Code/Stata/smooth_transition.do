@@ -8,6 +8,7 @@ quietly gen p75 = .
 quietly gen p90 = .
 quietly gen desvest = .
 quietly gen promedio = .
+quietly local weighteddebt = 51.410
 * Computing statistics
 levelsof code, local(cc)
 foreach x in `cc' {
@@ -21,7 +22,7 @@ foreach x in `cc' {
 	quietly replace promedio = r(mean) if code == `x'
 }
 * Standarized variable
-quietly gen X = (L.$VARSTF - promedio)/desvest
+quietly gen X = (L.$VARSTF - p50)/desvest
 * Switching parameter
 local theta 3
 * Probability function (0<=Fd<=1)
